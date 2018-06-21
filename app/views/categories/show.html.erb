@@ -5,5 +5,20 @@
   <%= @category.name %>
 </p>
 
+<%= form_with(model: [ @category, Product.new ]) do |form| %>
+  <div class="form-group">
+    <%= form.label :name, "Name" %>
+    <%= form.text_field :name , class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= form.label :price, "Price" %>
+    <%= form.text_field :price , class: 'form-control' %>
+  </div>
+
+  <div class="float-right">
+    <%= form.submit "Guardar", class: 'btn btn-primary btn-lg' %>
+  </div>
+<% end %>
+
 <%= link_to 'Edit', edit_category_path(@category) %> |
 <%= link_to 'Back', categories_path %>
