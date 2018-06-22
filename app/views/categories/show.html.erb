@@ -5,7 +5,20 @@
   <%= @category.name %>
 </p>
 
+<h5>Productos: </h5>
+<ul>
+
+  <% @category.products.each do |product| %>
+    <li>Producto: <%= product.name%> - Precio: <%= product.price%>
+      <%= link_to 'x', category_product_path(@category, product), method: :delete  %>
+    </li>
+
+
+  <% end %>
+</ul>
+
 <%= form_with(model: [ @category, Product.new ]) do |form| %>
+ <!-- <% form.hidden_field :category_id, value: @category.id %> -->
   <div class="form-group">
     <%= form.label :name, "Name" %>
     <%= form.text_field :name , class: 'form-control' %>
